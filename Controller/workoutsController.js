@@ -47,7 +47,7 @@ exports.createWorkouts = async (req, res) => {
 
 exports.getAllWorkouts = async (req, res) => {
     try {
-      const users = await workoutsModel.findAll();
+const users = await workoutsModel.findAll();
       res.status(200).json({
         message: 'Check workouts below',
         data: users
@@ -70,7 +70,7 @@ exports.getAllWorkouts = async (req, res) => {
           return res.status(404).json('user does not exist')
       }
 
-      const users = await workoutsModel.findOne({ where: { user_id: existUsers.dataValues.id } });;
+      const users = await workoutsModel.findAll({ where: { user_id: existUsers.dataValues.id } });;
       res.status(200).json({
         message: 'Check workouts below',
         data: users
@@ -81,20 +81,6 @@ exports.getAllWorkouts = async (req, res) => {
         error: error.message
       })
     }
-  }
+      }
 
-  // exports.getOne=async (req, res)=> {
-//     try {
-//         const store =await store.findByPK(req.params.id)
-//         if (!store){
-//          return  res.status(404).json("store not found")
-//         }
-//             res.status(200).json({
-//                message:`kindly find below user with the above id`,
-//                data:store
-//             })
-//     } catch (error) {
-//         res.status(500).json({error:error.message})
    
-//     }
-//  } 
